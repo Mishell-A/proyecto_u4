@@ -1,0 +1,131 @@
+/* Contenedor principal */
+.container {
+  max-width: 1100px;
+}
+
+/* Perfil lateral */
+.perfil {
+  background-color: #f4f4f4;
+  padding: 20px;
+  border-radius: 10px;
+  text-align: center;
+}
+
+.perfil-info .avatar {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  margin-bottom: 10px;
+}
+
+/* Botones personalizados */
+.boton-personalizado {
+  background-color: #7c6ae4;
+  color: white;
+  border: none;
+  padding: 10px;
+  cursor: pointer;
+  border-radius: 8px;
+  transition: background-color 0.3s ease;
+}
+
+.boton-personalizado:hover {
+  background-color: #6d5ad6;
+}
+
+/* Campo de texto */
+.campo-texto {
+  width: 100%;
+  padding: 8px;
+  border: 1px solid #d7cff8;
+  border-radius: 8px;
+}
+
+/* Contenedor de subir imagen */
+.image-upload-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 80px;
+}
+
+.boton-subir-imagen {
+  background-color: #e4eaff;
+  padding: 8px;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.vista-previa {
+  width: 80px;
+  height: 80px;
+  object-fit: cover;
+  border: 1px solid #d7cff8;
+  border-radius: 8px;
+  margin-top: 5px;
+}
+
+/* Opciones del menú */
+.opciones-menu {
+  list-style: none;
+  background-color: #e4eaff;
+  padding: 0;
+  margin: 0;
+  border-radius: 6px;
+  position: absolute;
+  display: none;
+}
+
+.boton-opciones:hover + .opciones-menu,
+.opciones-menu:hover {
+  display: block;
+}
+
+.opcion {
+  padding: 10px;
+  color: #5f3bb6;
+  text-decoration: none;
+}
+
+.opcion.eliminar {
+  color: #d9534f;
+}
+
+/* Estilos de las publicaciones */
+.custom-card {
+  background-color: #f5f2fa;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+}
+
+.titulo-card {
+  color: #5f3bb6;
+}
+
+.fecha-publicacion {
+  color: #7a6ca1;
+}
+
+.contenido-publicacion {
+  color: #4a4a4a;
+}
+
+/* Imagen de perfil */
+.foto-perfil {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  margin-right: 10px;
+}
+
+/* Responsivo */
+@media (max-width: 768px) {
+  .perfil {
+    margin-bottom: 20px;
+  }
+
+  .custom-card {
+    margin-top: 10px;
+  }
+}
