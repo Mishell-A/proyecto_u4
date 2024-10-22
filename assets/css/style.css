@@ -68,6 +68,11 @@ img {
   font-size: 30px;
 }
 
+a {
+  color: rgb(46, 147, 230);
+  text-decoration: none;
+}
+
 #register-button {
   color: rgb(46, 147, 230);
   border: none;
@@ -78,6 +83,7 @@ img {
   .main-container {
     display: flex;
     border-radius: 0px;
+    height: 90vh;
   }
   .contenedor-img {
     width: 300px;
@@ -95,6 +101,7 @@ img {
   .main-container {
     display: flex;
     border-radius: 0px;
+    height: 80vh;
   }
   .contenedor-img {
     width: 350px;
