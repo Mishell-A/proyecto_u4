@@ -41,5 +41,9 @@ document
               Registrarse
             </button>
           </div>
+          <div class="d-flex justify-content-center gap-2 mt-3 pb-4">
+              <p>¿Ya tienes una cuenta?</p>
+              <a href="./index.html">Inicia Sesión</a>
+          </div>
     </form>`;
   });
