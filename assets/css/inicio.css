@@ -131,7 +131,7 @@ body {
   }
 }
 
-@media (max-width: 992px) {
+@media (max-width: 768px) {
   .perfil {
     margin-bottom: 16px;
   }
@@ -139,12 +139,7 @@ body {
   .crear-pub {
     margin-top: 0;
   }
-  body {
-    font-size: 16px;
-  }
-}
 
-@media (max-width: 768px) {
   .perfil-info .avatar {
     width: 80px;
     height: 80px;
