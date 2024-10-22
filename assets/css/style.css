@@ -8,6 +8,7 @@ body {
   box-shadow: -7px 27px 33px -7px rgba(255, 255, 255, 0.6);
   -webkit-box-shadow: -7px 27px 33px -7px rgba(255, 255, 255, 0.6);
   -moz-box-shadow: -7px 27px 33px -7px rgba(255, 255, 255, 0.6);
+  height: 550px;
 }
 .contenedor-img {
   background: rgb(204, 158, 214);
@@ -79,7 +80,7 @@ img {
   }
   .contenedor-img {
     width: 350px;
-    height: auto;
+    height: 550px;
   }
   img {
     width: 120px;
@@ -87,5 +88,6 @@ img {
   }
   .contenedor {
     width: 350px;
+    height: 550px;
   }
 }
