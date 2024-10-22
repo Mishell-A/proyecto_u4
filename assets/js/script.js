@@ -16,6 +16,7 @@ document
               class="form-control"
               id="signup-name"
               placeholder="Ingresa tu nombre completo"
+              required
             />
           </div>
           <div class="mb-2 px-4">
