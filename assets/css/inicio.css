@@ -2,6 +2,7 @@
 body {
   font-family: "Quicksand", sans-serif;
   background-color: #031b2d;
+  font-size: 18px;
 }
 
 .navbar {
@@ -119,13 +120,63 @@ body {
   width: 40px;
   margin-right: 10px;
 }
-/* Responsivo */
-@media (max-width: 768px) {
+/* Media Queries */
+@media (max-width: 1200px) {
+  .principal {
+    width: 100%;
+    padding: 12px;
+  }
+  body {
+    font-size: 17px;
+  }
+}
+
+@media (max-width: 992px) {
   .perfil {
-    margin-bottom: 20px;
+    margin-bottom: 16px;
   }
 
   .crear-pub {
-    margin-top: 10px;
+    margin-top: 0;
+  }
+  body {
+    font-size: 16px;
+  }
+}
+
+@media (max-width: 768px) {
+  .perfil-info .avatar {
+    width: 80px;
+    height: 80px;
+  }
+
+  .foto-perfil {
+    width: 40px;
+    height: 40px;
+  }
+
+  .navbar {
+    padding: 12px;
+  }
+  body {
+    font-size: 15px;
+  }
+}
+
+@media (max-width: 576px) {
+  .navbar-brand {
+    font-size: 18px;
+  }
+
+  .campo-texto {
+    font-size: 14px;
+  }
+
+  .boton-personalizado {
+    padding: 8px;
+  }
+
+  body {
+    font-size: 12px;
   }
 }
