@@ -14,7 +14,7 @@
       rel="stylesheet"
       href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css"
     />
-    <link rel="stylesheet" href="./css/style.css" />
+    <link rel="stylesheet" href="./assets/css/style.css" />
   </head>
   <body>
     <div class="vh-100 d-flex justify-content-center align-items-center">
@@ -28,31 +28,27 @@
             alt="imagen"
           />
         </div>
-        <div class="contenedor" id="singUp">
-          <div class="sing-up">
-            <h1
-              class="text-light d-flex justify-content-flex-start mb-4 ms-3 pt-5"
-            >
-              Chattergram
-            </h1>
+        <div class="contenedor" id="sign-in">
+          <div class="sign-up">
+            <h1 class="text-light mb-4 ms-3 pt-5 text-center">Chattergram</h1>
           </div>
-          <form class="signup-form" id="signup-form">
+          <form class="signup-form" id="signin-form">
             <div class="mb-2 px-4">
-              <label for="signup-email" class="form-label">Correo</label>
+              <label for="signin-email" class="form-label">Correo</label>
               <input
                 type="email"
                 class="form-control"
-                id="signup-email"
+                id="signin-email"
                 aria-describedby="emailHelp"
-                placeholder="Ingresa tu correo"
+                placeholder="correo@ejemplo.com"
               />
             </div>
             <div class="mb-2 px-4">
-              <label for="signup-password" class="form-label">Contraseña</label>
+              <label for="signin-password" class="form-label">Contraseña</label>
               <input
                 type="password"
                 class="form-control"
-                id="signup-password"
+                id="signin-password"
                 placeholder="Debe tener mas de 6 caracteres"
               />
             </div>
@@ -61,7 +57,7 @@
                 Inicia sesión
               </button>
             </div>
-            <div class="login ms-5">
+            <div class="login text-center">
               <p>Iniciar sesión con...</p>
             </div>
             <div class="d-flex justify-content-center text-align-center gap-4">
@@ -70,7 +66,7 @@
             </div>
             <div class="d-flex justify-content-center gap-2 mt-3 pb-4">
               <p>¿No tienes una cuenta?</p>
-              <a href="./">Regístrate</a>
+              <button type="submit" id="register-button">Regístrate</button>
             </div>
           </form>
         </div>
@@ -81,5 +77,6 @@
       integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
       crossorigin="anonymous"
     ></script>
+    <script type="module" src="./js/script.js"></script>
   </body>
 </html>
