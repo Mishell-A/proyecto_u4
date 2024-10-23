@@ -68,6 +68,10 @@ img {
   font-size: 30px;
 }
 
+#signup-form {
+  display: none;
+}
+
 a {
   color: rgb(46, 147, 230);
   text-decoration: none;

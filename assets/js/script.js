@@ -1,50 +1,31 @@
-import { app } from "./firebase.js";
+import { auth } from "./firebase.js";
+import { onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.14.1/firebase-auth.js";
+//Importar el archivo de registro
 import "./signupForm.js";
-//Mostrar el objeto que se importó
-console.log(app);
+import "./signinForm.js";
 
-document
-  .getElementById("register-button")
-  .addEventListener("click", function () {
-    const form = document.getElementById("signin-form");
-    form.innerHTML = `
-    <form class="signup-form">
-        <div class="mb-2 px-4">
-            <label for="signup-name" class="form-label">Nombre completo</label>
-            <input
-              type="text"
-              class="form-control"
-              id="signup-name"
-              placeholder="Ingresa tu nombre completo"
-              required
-            />
-          </div>
-          <div class="mb-2 px-4">
-            <label for="signup-email" class="form-label">Correo</label>
-            <input
-              type="email"
-              class="form-control"
-              id="signup-email"
-              placeholder="correo@ejemplo.com"
-            />
-          </div>
-          <div class="mb-2 px-4">
-            <label for="signup-password" class="form-label">Contraseña</label>
-            <input
-              type="password"
-              class="form-control"
-              id="signup-password"
-              placeholder="Debe tener más de 6 caracteres"
-            />
-          </div>
-          <div class="d-flex justify-content-center mt-4 mb-4">
-            <button type="submit" class="btn-custom rounded-5 p-2">
-              Registrarse
-            </button>
-          </div>
-          <div class="d-flex justify-content-center gap-2 mt-3 pb-4">
-              <p>¿Ya tienes una cuenta?</p>
-              <a href="./index.html">Inicia Sesión</a>
-          </div>
-    </form>`;
+//Manejo de la autenticación
+//Cada ves que se cambie la autenticacion va a aparecer eso
+onAuthStateChanged(auth, async (user) => {
+  console.log(user);
+});
+
+// Esperar a que el documento esté listo
+document.addEventListener("DOMContentLoaded", () => {
+  const button = document.getElementById("register-button");
+  const signupForm = document.getElementById("signup-form");
+  const signinForm = document.getElementById("signin-form");
+
+  button.addEventListener("click", (e) => {
+    e.preventDefault();
+
+    // Visibilidad de los formularios
+    if (signupForm.style.display === "none") {
+      signupForm.style.display = "block";
+      signinForm.style.display = "none";
+    } else {
+      signupForm.style.display = "none";
+      signinForm.style.display = "block";
+    }
   });
+});
