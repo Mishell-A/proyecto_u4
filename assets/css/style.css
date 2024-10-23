@@ -1,10 +1,47 @@
 .gradient-custom {
-    /* fallback for old browsers */
-    background: #9261ee;
-    
-    /* Chrome 10-25, Safari 5.1-6 */
-    background: -webkit-linear-gradient(to right bottom, rgb(145, 77, 218), rgb(108, 175, 226));
-    
-    /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-    background: linear-gradient(to right bottom, rgb(169, 74, 210), rgb(118, 196, 233))
+    background: rgb(204, 158, 214);
+  background: radial-gradient(
+    circle,
+    rgba(204, 158, 214, 1) 36%,
+    rgba(104, 141, 214, 0.8346988453584558) 78%
+  );
+
     }
+    
+.xd {
+    color: azure;
+}
+
+
+section {
+  flex: 1;
+}
+
+.contenedor-img {
+    background: rgb(204, 158, 214);
+    background: radial-gradient(
+      circle,
+      rgba(204, 158, 214, 1) 36%,
+      rgba(104, 141, 214, 0.8346988453584558) 78%
+    );
+    height: 90px;
+    width: 300px;
+    border-top-right-radius: 10px;
+    border-top-left-radius: 10px;
+  }
+
+
+
+  .navbar {
+    background: rgb(204, 158, 214);
+  background: radial-gradient(
+    circle,
+    rgba(204, 158, 214, 1) 36%,
+    rgba(104, 141, 214, 0.8346988453584558) 78%
+  );
+
+  }
+  .img-logo {
+    width: 40px;
+    margin-right: 10px;
+  }
