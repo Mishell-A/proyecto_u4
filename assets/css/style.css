@@ -51,7 +51,19 @@ img {
   border-bottom-left-radius: 10px;
   border-bottom-right-radius: 10px;
 }
-
+#google-btn {
+  color: white;
+  background-color: #031b2d;
+  border: none;
+}
+#github-btn {
+  color: white;
+  background-color: #031b2d;
+  border: none;
+}
+.custom-icon {
+  font-size: 35px;
+}
 .btn-custom {
   background: rgb(204, 158, 214);
   background: radial-gradient(
@@ -63,9 +75,6 @@ img {
 }
 .login {
   font-size: 20px;
-}
-.custom-icon {
-  font-size: 30px;
 }
 
 a {

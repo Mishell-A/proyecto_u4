@@ -1,5 +1,6 @@
 import { app } from "./firebase.js";
 import "./signupForm.js";
+import "./googleLogin.js"
 //Mostrar el objeto que se importó
 console.log(app);
 
