@@ -119,6 +119,7 @@ a {
   }
   .contenedor-img {
     width: 350px;
+    height: 100%;
   }
   img {
     width: 120px;
