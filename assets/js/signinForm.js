@@ -4,8 +4,6 @@ import { showMessage } from "./toastMessage.js";
 
 const signInForm = document.querySelector("#signin-form");
 
-console.log("signin");
-
 //Cuando se envie el formulario
 //async : asincronó
 signInForm.addEventListener("submit", async (e) => {
@@ -26,7 +24,6 @@ signInForm.addEventListener("submit", async (e) => {
       password
     );
 
-    showMessage("Sesión Iniciada", "success");
     // Guardar el usuario en el localstorage
     localStorage.setItem("user", JSON.stringify(userCredentials.user));
     //Redireccionar al home

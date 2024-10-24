@@ -7,11 +7,14 @@ const signOutButton = document.querySelector("#Logout");
 signOutButton.addEventListener("click", async () => {
   try {
     await signOut(auth);
-    showMessage("Sesión cerrada", "success");
+    showMessage("Cerrando sesión", "loading");
+
     // Guardar el usuario en el localstorage
     localStorage.removeItem("user");
-    //Redireccionar al home
-    window.location.href = "./index.html";
+    // Esperar un poco antes de redirigir
+    setTimeout(() => {
+      window.location.href = "./index.html";
+    }, 1000);
   } catch (error) {
     console.error("Error:", error.message);
   }
