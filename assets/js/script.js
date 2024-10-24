@@ -2,7 +2,8 @@ import { auth } from "./firebase.js";
 import { onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.14.1/firebase-auth.js";
 //Importar el archivo de registro
 import "./signupForm.js";
-import "./googleLogin.js"
+import "./googleLogin.js";
+import "./signinForm.js";
 
 //Manejo de la autenticación
 //Cada ves que se cambie la autenticacion va a aparecer eso

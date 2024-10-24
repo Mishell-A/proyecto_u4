@@ -1,7 +1,6 @@
 import "./signOut.js";
 import "./setupTasks.js";
-
-console.log("Hola");
+import "./toastMessage.js";
 
 const user = JSON.parse(localStorage.getItem("user"));
 
