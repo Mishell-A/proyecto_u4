@@ -14,4 +14,8 @@ Chattergram es una innovadora red social que permite a los usuarios conectarse, 
 
 A continuación, se muestran las tecnologías utilizadas en el desarrollo de Chattergram:
 
-![HTML](https://s3.amazonaws.com/shecodesio-production/cheatsheets/logos/000/000/001/original/html.png?1616282665) ![CSS](https://w7.pngwing.com/pngs/393/49/png-transparent-css-logo-thumbnail.png) ![JavaScript](https://w7.pngwing.com/pngs/640/199/png-transparent-javascript-logo-html-javascript-logo-angle-text-rectangle-thumbnail.png) ![Bootstrap](https://w7.pngwing.com/pngs/628/224/png-transparent-bootstrap-plain-wordmark-logo-icon.png) ![Firebase](https://firebase.google.com/static/images/brand-guidelines/logo-vertical.png)
+[![HTML](https://img.shields.io/badge/HTML-%23E34F26.svg?logo=html5&logoColor=white)](#)
+[![CSS](https://img.shields.io/badge/CSS-1572B6?logo=css3&logoColor=fff)](#)
+[![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?logo=javascript&logoColor=000)](#)
+[![Bootstrap](https://img.shields.io/badge/-Bootstrap-563D7C?style=flat-square&logo=bootstrap)](#)
+[![Firebase](https://img.shields.io/badge/Firebase-FFCA28?style=flat-square&logo=firebase&logoColor=black)](#)
