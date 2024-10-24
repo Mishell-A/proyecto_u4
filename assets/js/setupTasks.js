@@ -1,7 +1,16 @@
-import { createTask, onGetTask } from "./firebase.js";
+import {
+  createTask,
+  onGetTask,
+  deleteTask,
+  updateTask,
+  getTask,
+} from "./firebase.js";
 
 const taskForm = document.querySelector("#task-form");
 const tasksContainer = document.querySelector("#tasks-container");
+
+let editStatus = false;
+let editId = "";
 export const setupTasks = () => {
   console.log("Hola");
 
@@ -11,10 +20,15 @@ export const setupTasks = () => {
 
     const title = taskForm["title"].value;
     const description = taskForm["description"].value;
+    console.log("boton presionado");
 
     // Crear la tarea
     try {
-      await createTask(title, description);
+      if (editStatus) {
+        await updateTask(editId, { title, description });
+      } else {
+        await createTask(title, description);
+      }
       taskForm.reset();
     } catch (error) {
       // showMessage(error.code, "error");
@@ -49,8 +63,8 @@ export const setupTasks = () => {
                   <i class="bi bi-three-dots"></i>
                 </button>
                 <ul class="opciones-menu">
-                  <li><a class="opcion" href="#">Editar</a></li>
-                  <li><a class="opcion eliminar" href="#">Eliminar</a></li>
+                  <li><button class="opcion btn-editar" data-id="${doc.id}">Editar</button></li>
+                  <li><button class="opcion eliminar  btn-eliminar" data-id="${doc.id}">Eliminar</button></li>
                 </ul>
               </div>
             </div>
@@ -67,6 +81,37 @@ export const setupTasks = () => {
       `;
     });
     tasksContainer.innerHTML = tasksHtml;
+
+    //UPDATE
+    const btnsEditar = document.querySelectorAll(".btn-editar");
+    btnsEditar.forEach((btn) => {
+      btn.addEventListener("click", async ({ target: { dataset } }) => {
+        const doc = await getTask(dataset.id);
+
+        const task = doc.data();
+
+        // llenamos los datos del formulario
+        taskForm["title"].value = task.title;
+        taskForm["description"].value = task.description;
+
+        editStatus = true;
+        editId = doc.id;
+
+        document.getElementById("form-publicacion").innerHTML =
+          "Editar Publicación";
+        taskForm["btn-agregar"].innerHTML = "Guardar Cambios";
+      });
+    });
+
+    // DELETE
+    const btnsEliminar = document.querySelectorAll(".btn-eliminar");
+
+    btnsEliminar.forEach((btn) => {
+      btn.addEventListener("click", ({ target: { dataset } }) => {
+        deleteTask(dataset.id);
+        console.log("tarea eliminada", "success");
+      });
+    });
   });
 };
 

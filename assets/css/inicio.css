@@ -82,11 +82,13 @@ body {
 .opcion {
   padding: 10px;
   color: #5f3bb6;
-  text-decoration: none;
+  border: none;
 }
 
 .opcion.eliminar {
+  background-color: #e6e6e6;
   color: #d9534f;
+  border: none;
 }
 
 /* Estilos de las publicaciones */
