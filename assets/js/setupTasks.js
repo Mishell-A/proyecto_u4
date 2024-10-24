@@ -1,7 +1,16 @@
-import { createTask, onGetTask } from "./firebase.js";
+import {
+  createTask,
+  onGetTask,
+  deleteTask,
+  updateTask,
+  getTask,
+} from "./firebase.js";
 
 const taskForm = document.querySelector("#task-form");
 const tasksContainer = document.querySelector("#tasks-container");
+
+let editStatus = false;
+let editId = "";
 export const setupTasks = () => {
   console.log("Hola");
 
@@ -49,8 +58,8 @@ export const setupTasks = () => {
                   <i class="bi bi-three-dots"></i>
                 </button>
                 <ul class="opciones-menu">
-                  <li><a class="opcion" href="#">Editar</a></li>
-                  <li><a class="opcion eliminar" href="#">Eliminar</a></li>
+                  <li><button class="opcion btn-editar" data-id="${doc.id}">Editar</button></li>
+                  <li><button class="opcion eliminar  btn-eliminar" data-id="${doc.id}">Eliminar</button></li>
                 </ul>
               </div>
             </div>
@@ -67,6 +76,18 @@ export const setupTasks = () => {
       `;
     });
     tasksContainer.innerHTML = tasksHtml;
+
+    //UPDATE
+
+    // DELETE
+    const btnsEliminar = document.querySelectorAll(".btn-eliminar");
+    console.log(btnsEliminar);
+    btnsEliminar.forEach((btn) => {
+      btn.addEventListener("click", ({ target: { dataset } }) => {
+        deleteTask(dataset.id);
+        console.log("tarea eliminada", "success");
+      });
+    });
   });
 };
 

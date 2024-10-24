@@ -8,6 +8,9 @@ import {
   doc,
   addDoc,
   onSnapshot,
+  deleteDoc,
+  updateDoc,
+  getDoc,
 } from "https://www.gstatic.com/firebasejs/10.14.1/firebase-firestore.js";
 // TODO: Add SDKs for Firebase products that you want to use
 
@@ -36,3 +39,9 @@ export const createTask = (title, description) => {
 
 export const onGetTask = (callback) =>
   onSnapshot(collection(db, "tasks"), callback);
+
+export const getTask = (id) => getDoc(doc(db, "tasks", id));
+export const updateTask = (id, newData) =>
+  updateDoc(doc(db, "tasks", id), newData);
+
+export const deleteTask = (id) => deleteDoc(doc(db, "tasks", id));
