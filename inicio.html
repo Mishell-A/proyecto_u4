@@ -95,7 +95,9 @@
         <section class="col-lg-8 col-md-7">
           <div class="card p-3 crear-pub">
             <div class="d-flex align-items-center mb-2">
-              <h5 class="titulo-card mb-0">Crear Publicación</h5>
+              <h5 class="titulo-card mb-0" id="form-publicacion">
+                Crear Publicación
+              </h5>
             </div>
 
             <form id="task-form">
@@ -122,7 +124,7 @@
               <button
                 type="submit"
                 class="boton-personalizado w-100"
-                id="btn-publicar"
+                id="btn-agregar"
               >
                 Publicar
               </button>
@@ -155,13 +157,15 @@
                 </button>
                 <ul class="opciones-menu">
                   <li><a class="opcion" href="#">Editar</a></li>
-                  <li><a class="opcion eliminar" href="#">Eliminar</a></li>
+                  <li>
+                    <button class="opcion eliminar">Eliminar</button>
+                  </li>
                 </ul>
               </div>
             </div>
-            <p class="contenido-publicacion">
-              Este es un ejemplo de texto para una publicación.
-            </p>
+            <h4 class="contenido-publicacion">titulo</h4>
+            <hr />
+            <p>description</p>
           </div>
         </div>
       </article>
