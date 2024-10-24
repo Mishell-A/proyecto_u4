@@ -8,6 +8,7 @@ body {
   box-shadow: -7px 27px 33px -7px rgba(255, 255, 255, 0.6);
   -webkit-box-shadow: -7px 27px 33px -7px rgba(255, 255, 255, 0.6);
   -moz-box-shadow: -7px 27px 33px -7px rgba(255, 255, 255, 0.6);
+  border-radius: 10px;
 }
 
 .gradient-custom {
@@ -43,13 +44,12 @@ body {
 }
 img {
   height: 60px;
-  width: 60px;
+  width: 70px;
 }
 .contenedor {
   color: white;
   background-color: #031b2d;
-  border-bottom-left-radius: 10px;
-  border-bottom-right-radius: 10px;
+  border-radius: 10px;
 }
 #google-btn {
   color: white;
@@ -96,7 +96,7 @@ a {
   .main-container {
     display: flex;
     border-radius: 0px;
-    height: 90vh;
+    height: 80vh;
   }
   .contenedor-img {
     width: 300px;
@@ -109,6 +109,9 @@ a {
   .contenedor {
     width: 300px;
     height: 550px;
+  }
+  .custom-icon {
+    font-size: 50px;
   }
 }
 @media (min-width: 1024px) {

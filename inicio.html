@@ -20,6 +20,7 @@
       href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css"
     />
     <link rel="stylesheet" href="./assets/css/inicio.css" />
+    <script type="module" src="./assets/js/script.js"></script>
   </head>
   <body>
     <header>
@@ -50,10 +51,15 @@
                   class="nav-link active"
                   aria-current="page"
                   href="./inicio.html"
+                <a
+                  class="nav-link active"
+                  aria-current="page"
+                  href="./inicio.html"
                   ><i class="bi bi-house-door-fill"></i> Inicio</a
                 >
               </li>
               <li class="nav-item">
+                <a class="nav-link" href="./perfil.html">
                 <a class="nav-link" href="./perfil.html">
                   <i class="bi bi-person-fill"></i> Perfil</a
                 >
@@ -89,29 +95,37 @@
         <section class="col-lg-8 col-md-7">
           <div class="card p-3 crear-pub">
             <div class="d-flex align-items-center mb-2">
-              <h5 class="titulo-card mb-0">Crear Publicación</h5>
+              <h5 class="titulo-card mb-0" id="form-publicacion">
+                Crear Publicación
+              </h5>
             </div>
 
-            <form>
+            <form id="task-form">
               <div class="mb-2">
                 <input
                   type="text"
                   class="campo-texto"
-                  id="titulo"
+                  id="title"
                   placeholder="Escribe el título aquí"
+                  required
                 />
               </div>
 
               <div class="d-flex mb-2">
                 <textarea
                   class="campo-texto me-2"
-                  id="descripcion"
+                  id="description"
                   rows="3"
                   placeholder="¿Qué estás pensando?"
+                  required
                 ></textarea>
               </div>
 
-              <button type="submit" class="boton-personalizado w-100">
+              <button
+                type="submit"
+                class="boton-personalizado w-100"
+                id="btn-agregar"
+              >
                 Publicar
               </button>
             </form>
@@ -119,9 +133,9 @@
         </section>
       </div>
 
-      <!-- Publicaciones -->
-      <article class="my-4">
-        <div class="card mb-3 publicaciones">
+      <!-- Publicaciones  -->
+      <article class="my-4" id="tasks-container">
+        <div class="card Publicaciones">
           <div class="card-body">
             <div class="d-flex justify-content-between align-items-center">
               <div class="d-flex align-items-center">
@@ -143,13 +157,15 @@
                 </button>
                 <ul class="opciones-menu">
                   <li><a class="opcion" href="#">Editar</a></li>
-                  <li><a class="opcion eliminar" href="#">Eliminar</a></li>
+                  <li>
+                    <button class="opcion eliminar">Eliminar</button>
+                  </li>
                 </ul>
               </div>
             </div>
-            <p class="contenido-publicacion">
-              Este es un ejemplo de texto para una publicación.
-            </p>
+            <h4 class="contenido-publicacion">titulo</h4>
+            <hr />
+            <p>description</p>
           </div>
         </div>
       </article>
