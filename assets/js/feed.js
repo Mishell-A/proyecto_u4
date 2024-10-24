@@ -1,5 +1,6 @@
 import "./signOut.js";
 import "./setupTasks.js";
+import "./toastMessage.js";
 
 console.log("Hola");
 
