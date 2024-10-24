@@ -2,7 +2,7 @@ import { auth } from "./firebase.js";
 import { createUserWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/10.14.1/firebase-auth.js";
 import { showMessage } from "./toastMessage.js";
 
-const signupForm = document.querySelector(".signup-form");
+const signupForm = document.querySelector("#signup-form");
 
 console.log(signupForm);
 
@@ -24,15 +24,18 @@ signupForm.addEventListener("submit", async (e) => {
       email,
       password
     );
-    console.log(userCredentials);
 
     showMessage("Usuario registrado", "success");
+    // Guardar el usuario en el localstorage
+    localStorage.setItem("user", JSON.stringify(userCredentials.user));
+    //Redireccionar al home
+    window.location.href = "./inicio.html";
+    //Limpiar el formulario
+    signupForm.reset();
   } catch (error) {
-    console.error(error);
-
     //Mensaje de error
     if (error.code === "auth/email-already-in-use") {
-      showMessage("Email ya registrado", "error");
+      showMessage("Correo ya registrado", "error");
     } else if (error.code === "auth/invalid-email") {
       showMessage("Email inválido", "error");
     } else if (error.code === "auth/weak-password") {
