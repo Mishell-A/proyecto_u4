@@ -20,10 +20,15 @@ export const setupTasks = () => {
 
     const title = taskForm["title"].value;
     const description = taskForm["description"].value;
+    console.log("boton presionado");
 
     // Crear la tarea
     try {
-      await createTask(title, description);
+      if (editStatus) {
+        await updateTask(editId, { title, description });
+      } else {
+        await createTask(title, description);
+      }
       taskForm.reset();
     } catch (error) {
       // showMessage(error.code, "error");
@@ -78,10 +83,29 @@ export const setupTasks = () => {
     tasksContainer.innerHTML = tasksHtml;
 
     //UPDATE
+    const btnsEditar = document.querySelectorAll(".btn-editar");
+    btnsEditar.forEach((btn) => {
+      btn.addEventListener("click", async ({ target: { dataset } }) => {
+        const doc = await getTask(dataset.id);
+
+        const task = doc.data();
+
+        // llenamos los datos del formulario
+        taskForm["title"].value = task.title;
+        taskForm["description"].value = task.description;
+
+        editStatus = true;
+        editId = doc.id;
+
+        document.getElementById("form-publicacion").innerHTML =
+          "Editar Publicación";
+        taskForm["btn-agregar"].innerHTML = "Guardar Cambios";
+      });
+    });
 
     // DELETE
     const btnsEliminar = document.querySelectorAll(".btn-eliminar");
-    console.log(btnsEliminar);
+
     btnsEliminar.forEach((btn) => {
       btn.addEventListener("click", ({ target: { dataset } }) => {
         deleteTask(dataset.id);
