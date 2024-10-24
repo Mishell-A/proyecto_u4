@@ -12,6 +12,18 @@
     color: azure;
 }
 
+.aiuda {
+  width: 300px;
+}
+
+.cambiar {
+  background-color:#031b2d ;
+}
+
+.cambio{
+  background-color: #031b2d;
+}
+
 
 section {
   flex: 1;
