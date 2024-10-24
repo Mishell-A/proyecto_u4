@@ -1,4 +1,5 @@
 import "./signOut.js";
+import "./setupTasks.js";
 
 console.log("Hola");
 
