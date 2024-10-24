@@ -96,7 +96,7 @@ a {
   .main-container {
     display: flex;
     border-radius: 0px;
-    height: 90vh;
+    height: 80vh;
   }
   .contenedor-img {
     width: 300px;
