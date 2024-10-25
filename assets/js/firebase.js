@@ -36,8 +36,21 @@ export const db = getFirestore();
 
 // Opreciones CRUD
 
-export const createTask = (title, description) => {
-  addDoc(collection(db, "tasks"), { title, description });
+export const createTask = (
+  title,
+  description,
+  userName,
+  userImage,
+  userEmail
+) => {
+  addDoc(collection(db, "tasks"), {
+    title,
+    description,
+    userName,
+    userImage,
+    userEmail,
+    userFecha: new Date().toLocaleString(),
+  });
 };
 
 export const onGetTask = (callback) =>
