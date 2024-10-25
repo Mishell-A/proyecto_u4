@@ -13,6 +13,10 @@ githubButton.addEventListener("click", async (event) => {
 
   const provider = new GithubAuthProvider();
 
+  provider.setCustomParameters({
+    prompt: "select_account", // Forzar la selección de cuenta
+  });
+
   try {
     const credentials = await signInWithPopup(auth, provider);
 
@@ -22,7 +26,7 @@ githubButton.addEventListener("click", async (event) => {
   } catch (error) {
     console.log(error);
     if (error.code === "auth/account-exists-with-different-credential") {
-      showMessage("Credenciales ya registradas", "error");
+      showMessage("Cuenta ya registrada, iniciar sesi", "error");
     } else {
       showMessage(error.message, "error");
     }
