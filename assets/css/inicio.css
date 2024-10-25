@@ -91,6 +91,44 @@ body {
   border: none;
 }
 
+/* Estilos para los botones */
+.interaction-buttons button {
+  background-color: transparent;
+  border: none;
+  color: #007bff; /* Color de los iconos */
+  font-size: 1.5rem;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  transition: color 0.3s;
+}
+
+.interaction-buttons button:hover {
+  color: #0056b3; /* Color al pasar el ratón por encima */
+}
+
+/* Estilos para el contador de likes */
+.like-counter {
+  margin-left: 0.5rem;
+  font-size: 1.25rem;
+}
+
+/* Cuando el like está activo */
+.btn-like.active {
+  color: #ff0000; /* Cambia a rojo cuando se activa */
+}
+
+.comments-section {
+  margin-top: 1rem;
+}
+
+.comment-input {
+  width: 100%;
+  margin-bottom: 0.5rem;
+  padding: 0.5rem;
+  border: 1px solid #ccc;
+  border-radius: 0.25rem;
+}
 /* Estilos de las publicaciones */
 
 .publicaciones {

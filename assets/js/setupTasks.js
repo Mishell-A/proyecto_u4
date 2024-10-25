@@ -92,14 +92,33 @@ export const setupTasks = (user) => {
                     : `<div></div>`
                 }
             </div>
-            <h4 class="contenido-publicacion">
+            <h3 class="contenido-publicacion">
              ${data.title}
-            </h4>
+            </h3>
             <hr />
-            <p>
+            <h5>
              ${data.description}
-            </p>
+            </h5>
           </div>
+      <div class="interaction-buttons d-flex justify-content-start align-items-center">
+  <button class="btn-like d-flex align-items-center me-3" data-id="task-id">
+    <i class="bi bi-hand-thumbs-up"></i>
+    <p class="fs-4 mb-0 ms-1">like</p>
+    <span class="like-counter ms-2">0</span>
+  </button>
+  <button class="btn-comment d-flex align-items-center" data-id="task-id">
+    <i class="bi bi-chat-dots-fill"></i>
+    <p class="fs-4 mb-0 ms-1">Comentar</p>
+  </button>
+</div>
+
+
+      <!-- Sección de Comentarios -->
+      <div class="comments-section" style="display: none;">
+        <input type="text" class="comment-input" placeholder="Escribe un comentario" data-id="task-id">
+        <button class="btn-submit-comment" data-id="task-id">Enviar</button>
+      </div>
+    </div>
         </div>
       </article>
       `;
