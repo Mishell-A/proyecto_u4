@@ -129,6 +129,10 @@ body {
   border: 1px solid #ccc;
   border-radius: 0.25rem;
 }
+
+.btn-like.liked i {
+  color: #007bff; /* Azul */
+}
 /* Estilos de las publicaciones */
 
 .publicaciones {

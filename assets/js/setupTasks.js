@@ -4,6 +4,7 @@ import {
   deleteTask,
   updateTask,
   getTask,
+  toggleLike,
 } from "./firebase.js";
 
 const taskForm = document.querySelector("#task-form");
@@ -58,6 +59,7 @@ export const setupTasks = (user) => {
       if (data.userFecha) {
         formattedCreationTime = data.userFecha;
       }
+      const hasLiked = data.likes && data.likes.includes(user.email);
       tasksHtml += `
             <article class="my-4" id ="tasks-container">
         <div class = "card publicaciones" >
@@ -101,10 +103,15 @@ export const setupTasks = (user) => {
             </h5>
           </div>
       <div class="interaction-buttons d-flex justify-content-start align-items-center">
-  <button class="btn-like d-flex align-items-center me-3" data-id="task-id">
+  <button class="btn-like d-flex align-items-center me-3 ${
+    hasLiked ? "liked" : ""
+  }" data-id="${doc.id}"
+  ">
     <i class="bi bi-hand-thumbs-up"></i>
-    <p class="fs-4 mb-0 ms-1">like</p>
-    <span class="like-counter ms-2">0</span>
+    <p class="fs-4 mb-0 ms-1">likes</p>
+    <span class="like-counter ms-2">${
+      data.likes ? data.likes.length : 0
+    }</ span>
   </button>
   <button class="btn-comment d-flex align-items-center" data-id="task-id">
     <i class="bi bi-chat-dots-fill"></i>
@@ -153,6 +160,17 @@ export const setupTasks = (user) => {
       btn.addEventListener("click", ({ target: { dataset } }) => {
         deleteTask(dataset.id);
         console.log("tarea eliminada", "success");
+      });
+    });
+
+    const btnsLike = document.querySelectorAll(".btn-like");
+    btnsLike.forEach((btn) => {
+      btn.addEventListener("click", async ({ target }) => {
+        const taskId = target.closest("button").dataset.id;
+        await toggleLike(taskId, user.email);
+
+        // Alternar la clase 'liked' para cambiar el color del icono
+        target.classList.toggle("liked");
       });
     });
   });
