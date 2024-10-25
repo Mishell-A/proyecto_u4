@@ -48,6 +48,19 @@ export const setupTasks = (user) => {
       console.log(error);
     }
   });
+
+  // Referencias al elemento de imagen de perfil
+  const avatar = document.getElementById("avatar");
+
+  // Cargar imagen guardada o predeterminada al cargar la página
+  window.onload = async function () {
+    if (user.photoURL) {
+      avatar.src = user.photoURL; // Cargar la imagen guardada en Firebase
+    } else {
+      avatar.src = "./assets/img/defaultProfile.png"; // Usar la imagen predeterminada
+    }
+  };
+
   //READ
   onGetTask((querySnapshot) => {
     let tasksHtml = "";
