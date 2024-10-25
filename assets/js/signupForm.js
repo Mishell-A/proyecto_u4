@@ -1,4 +1,4 @@
-import { auth } from "./firebase.js";
+import { auth, updateProfile } from "./firebase.js";
 import { createUserWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/10.14.1/firebase-auth.js";
 import { showMessage } from "./toastMessage.js";
 
@@ -14,6 +14,7 @@ signupForm.addEventListener("submit", async (e) => {
   console.log("Formulario enviado");
 
   //Obtener los valores del formulario como objeto
+  const name = signupForm["signup-name"].value;
   const email = signupForm["signup-email"].value;
   const password = signupForm["signup-password"].value;
   // Manejar errores
@@ -24,6 +25,11 @@ signupForm.addEventListener("submit", async (e) => {
       email,
       password
     );
+
+    // Actualizar el perfil del usuario
+    await updateProfile(auth.currentUser, {
+      displayName: name,
+    });
 
     showMessage("Usuario registrado", "success");
     // Guardar el usuario en el localstorage

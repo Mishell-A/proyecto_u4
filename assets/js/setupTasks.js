@@ -27,7 +27,7 @@ export const setupTasks = (user) => {
           title,
           description,
           user.displayName,
-          user.photoURL,
+          user.photoURL || "./assets/img/defaultProfile.png",
           user.email
         );
         //showMessage("tarea creada", "success");
@@ -66,6 +66,7 @@ export const setupTasks = (user) => {
               <div class="d-flex align-items-center">
                 <img
                   src="${data.userImage}"
+                      
                   class="foto-perfil"
                   alt="${data.userName}"
                 />
