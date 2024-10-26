@@ -6,6 +6,7 @@ import {
   getTask,
   toggleLike,
   addComment,
+  addComment,
 } from "./firebase.js";
 
 const taskForm = document.querySelector("#task-form");
