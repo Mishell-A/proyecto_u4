@@ -14,6 +14,7 @@ import {
   deleteDoc,
   updateDoc,
   getDoc,
+  arrayUnion,
 } from "https://www.gstatic.com/firebasejs/10.14.1/firebase-firestore.js";
 
 // TODO: Add SDKs for Firebase products that you want to use
@@ -55,6 +56,7 @@ export const createTask = (
     userEmail,
     userFecha: new Date().toLocaleString(),
     likes: [],
+    comments: [],
   });
 };
 
@@ -86,4 +88,24 @@ export const toggleLike = async (taskId, userEmail) => {
       await updateDoc(taskRef, { likes: [...likes, userEmail] });
     }
   }
+};
+// Crear comentario
+// Para agregar un comentario
+export const addComment = async (
+  taskId,
+  comment,
+  userName,
+  userImage,
+  userEmail
+) => {
+  const taskRef = doc(db, "tasks", taskId);
+  await updateDoc(taskRef, {
+    comments: arrayUnion({
+      comment,
+      userName,
+      userImage,
+      userEmail,
+      timestamp: new Date().toLocaleString(),
+    }),
+  });
 };
