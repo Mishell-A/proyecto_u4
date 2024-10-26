@@ -111,9 +111,9 @@ export const setupTasks = (user) => {
                     : `<div></div>`
                 }
             </div>
-            <h3 class="contenido-publicacion">
+            <h4 class="contenido-publicacion">
              ${data.title}
-            </h3>
+            </h4>
             <hr />
             <h5>
              ${data.description}
@@ -125,14 +125,14 @@ export const setupTasks = (user) => {
   }" data-id="${doc.id}"
   ">
     <i class="bi bi-hand-thumbs-up"></i>
-    <p class="fs-4 mb-0 ms-1">likes</p>
+    <h4 class= mb-0 ms-1">likes</h4>
     <span class="like-counter ms-2">${
       data.likes ? data.likes.length : 0
     }</ span>
   </button>
   <button class="btn-comment d-flex align-items-center" data-id="${doc.id}">
     <i class="bi bi-chat-dots-fill"></i>
-    <p class="fs-4 mb-0 ms-1">Comentar</p>
+    <h4 class="mb-0 ms-1">Comentar</h4>
   </button>
 </div>
 
