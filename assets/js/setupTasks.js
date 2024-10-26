@@ -5,6 +5,8 @@ import {
   updateTask,
   getTask,
   toggleLike,
+  addComment,
+  addComment,
 } from "./firebase.js";
 
 const taskForm = document.querySelector("#task-form");
@@ -49,6 +51,22 @@ export const setupTasks = (user) => {
       console.log(error);
     }
   });
+
+  const generateCommentsHtml = (comments) => {
+    let commentsHtml = "";
+    if (comments && comments.length > 0) {
+      comments.forEach((comment) => {
+        commentsHtml += `
+          <div class="comment">
+            <img src="${comment.userImage}" alt="${comment.userName}" class="foto-perfil" />
+            <p><strong>${comment.userName}</strong><span>${comment.timestamp}: </span> ${comment.comment}</</p>
+          
+          </div>
+        `;
+      });
+    }
+    return commentsHtml;
+  };
 
   // Referencias al elemento de imagen de perfil
   const avatar = document.getElementById("avatar");
@@ -107,9 +125,9 @@ export const setupTasks = (user) => {
                     : `<div></div>`
                 }
             </div>
-            <h3 class="contenido-publicacion">
+            <h4 class="contenido-publicacion">
              ${data.title}
-            </h3>
+            </h4>
             <hr />
             <h5>
              ${data.description}
@@ -121,23 +139,28 @@ export const setupTasks = (user) => {
   }" data-id="${doc.id}"
   ">
     <i class="bi bi-hand-thumbs-up"></i>
-    <p class="fs-4 mb-0 ms-1">likes</p>
+    <h4 class= mb-0 ms-1">likes</h4>
     <span class="like-counter ms-2">${
       data.likes ? data.likes.length : 0
     }</ span>
   </button>
-  <button class="btn-comment d-flex align-items-center" data-id="task-id">
+  <button class="btn-comment d-flex align-items-center" data-id="${doc.id}">
     <i class="bi bi-chat-dots-fill"></i>
-    <p class="fs-4 mb-0 ms-1">Comentar</p>
+    <h4 class="mb-0 ms-1">Comentar</h4>
   </button>
 </div>
 
 
       <!-- Sección de Comentarios -->
-      <div class="comments-section" style="display: none;">
-        <input type="text" class="comment-input" placeholder="Escribe un comentario" data-id="task-id">
-        <button class="btn-submit-comment" data-id="task-id">Enviar</button>
-      </div>
+<div class="comments-section" style="display: none;">
+   
+  <input type="text" class="comment-input" placeholder="Escribe un comentario" data-id="${
+    doc.id
+  }">
+  <button class="btn-submit-comment" data-id="${doc.id}">Enviar</button>
+  <div class="comments-list">
+ ${generateCommentsHtml(data.comments)}</div> 
+</div>
     </div>
         </div>
       </article>
@@ -184,6 +207,38 @@ export const setupTasks = (user) => {
 
         // Alternar la clase 'liked' para cambiar el color del icono
         target.classList.toggle("liked");
+      });
+    });
+
+    const btnsComment = document.querySelectorAll(".btn-comment");
+    btnsComment.forEach((btn) => {
+      btn.addEventListener("click", ({ target }) => {
+        const commentsSection = target
+          .closest("article")
+          .querySelector(".comments-section");
+        commentsSection.style.display =
+          commentsSection.style.display === "none" ? "block" : "none"; // Alternar la visibilidad
+      });
+    });
+
+    // Manejo de eventos para el botón de enviar comentario
+    const btnsSubmitComment = document.querySelectorAll(".btn-submit-comment");
+    btnsSubmitComment.forEach((btn) => {
+      btn.addEventListener("click", async ({ target }) => {
+        const taskId = target.dataset.id;
+        const commentInput = target.previousElementSibling; // Obtener el input
+        const comment = commentInput.value;
+
+        if (comment.trim()) {
+          await addComment(
+            taskId,
+            comment,
+            user.displayName,
+            user.photoURL || "./assets/img/defaultProfile.png",
+            user.email
+          );
+          commentInput.value = ""; // Limpiar el input
+        }
       });
     });
   });
