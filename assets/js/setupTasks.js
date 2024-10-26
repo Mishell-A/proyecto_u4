@@ -4,6 +4,7 @@ import {
   deleteTask,
   updateTask,
   getTask,
+  toggleLike,
 } from "./firebase.js";
 
 const taskForm = document.querySelector("#task-form");
@@ -71,6 +72,7 @@ export const setupTasks = (user) => {
       if (data.userFecha) {
         formattedCreationTime = data.userFecha;
       }
+      const hasLiked = data.likes && data.likes.includes(user.email);
       tasksHtml += `
             <article class="my-4" id ="tasks-container">
         <div class = "card publicaciones" >
@@ -105,14 +107,38 @@ export const setupTasks = (user) => {
                     : `<div></div>`
                 }
             </div>
-            <h4 class="contenido-publicacion">
+            <h3 class="contenido-publicacion">
              ${data.title}
-            </h4>
+            </h3>
             <hr />
-            <p>
+            <h5>
              ${data.description}
-            </p>
+            </h5>
           </div>
+      <div class="interaction-buttons d-flex justify-content-start align-items-center">
+  <button class="btn-like d-flex align-items-center me-3 ${
+    hasLiked ? "liked" : ""
+  }" data-id="${doc.id}"
+  ">
+    <i class="bi bi-hand-thumbs-up"></i>
+    <p class="fs-4 mb-0 ms-1">likes</p>
+    <span class="like-counter ms-2">${
+      data.likes ? data.likes.length : 0
+    }</ span>
+  </button>
+  <button class="btn-comment d-flex align-items-center" data-id="task-id">
+    <i class="bi bi-chat-dots-fill"></i>
+    <p class="fs-4 mb-0 ms-1">Comentar</p>
+  </button>
+</div>
+
+
+      <!-- Sección de Comentarios -->
+      <div class="comments-section" style="display: none;">
+        <input type="text" class="comment-input" placeholder="Escribe un comentario" data-id="task-id">
+        <button class="btn-submit-comment" data-id="task-id">Enviar</button>
+      </div>
+    </div>
         </div>
       </article>
       `;
@@ -147,6 +173,17 @@ export const setupTasks = (user) => {
       btn.addEventListener("click", ({ target: { dataset } }) => {
         deleteTask(dataset.id);
         console.log("tarea eliminada", "success");
+      });
+    });
+
+    const btnsLike = document.querySelectorAll(".btn-like");
+    btnsLike.forEach((btn) => {
+      btn.addEventListener("click", async ({ target }) => {
+        const taskId = target.closest("button").dataset.id;
+        await toggleLike(taskId, user.email);
+
+        // Alternar la clase 'liked' para cambiar el color del icono
+        target.classList.toggle("liked");
       });
     });
   });

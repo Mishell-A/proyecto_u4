@@ -54,6 +54,7 @@ export const createTask = (
     userImage,
     userEmail,
     userFecha: new Date().toLocaleString(),
+    likes: [],
   });
 };
 
@@ -66,3 +67,23 @@ export const updateTask = (id, newData) =>
 
 export const deleteTask = (id) => deleteDoc(doc(db, "tasks", id));
 export { updateProfile };
+
+//LIKES
+export const toggleLike = async (taskId, userEmail) => {
+  const taskRef = doc(db, "tasks", taskId);
+  const taskSnap = await getDoc(taskRef);
+
+  if (taskSnap.exists()) {
+    const taskData = taskSnap.data();
+    const likes = taskData.likes || [];
+
+    if (likes.includes(userEmail)) {
+      // Eliminar el like del usuario si ya lo había dado
+      const updatedLikes = likes.filter((email) => email !== userEmail);
+      await updateDoc(taskRef, { likes: updatedLikes });
+    } else {
+      // Agregar el like del usuario
+      await updateDoc(taskRef, { likes: [...likes, userEmail] });
+    }
+  }
+};
