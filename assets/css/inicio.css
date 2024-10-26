@@ -133,6 +133,93 @@ body {
 .btn-like.liked i {
   color: #007bff; /* Azul */
 }
+
+/* Estilo para la sección de comentarios */
+
+/* Estilo general para la sección de comentarios */
+.comments-section {
+  margin-top: 20px;
+  padding: 15px;
+  border-radius: 10px;
+  background-color: #ededed;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Estilo para cada comentario */
+.comment {
+  display: flex;
+  align-items: flex-start;
+  margin-bottom: 15px;
+  padding: 12px;
+  background-color: #ededed;
+  border-radius: 8px;
+  border: 1px solid #d7cff8;
+  transition: background-color 0.3s, transform 0.3s;
+}
+
+/* Efecto al pasar el mouse sobre un comentario */
+.comment:hover {
+  background-color: #e8f0fe;
+  transform: translateY(-2px);
+}
+
+/* Estilo para la imagen del perfil del comentarista */
+.foto-perfil {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  margin-right: 10px;
+  border: 2px solid #5f3bb6;
+}
+
+/* Estilo para el texto del comentario */
+.comment p {
+  margin: 0;
+  font-size: 16px;
+  color: #333;
+}
+
+/* Nombre del usuario en negrita */
+.comment strong {
+  font-weight: bold;
+}
+
+/* Estilo para el timestamp */
+.comment span {
+  font-size: 12px;
+  color: #888;
+  margin-left: 8px;
+}
+/* Estilo para el campo de entrada y botón de comentario */
+.comment-input {
+  width: calc(
+    100% - 90px
+  ); /* Ancho del campo de entrada, espacio para el botón */
+  padding: 10px;
+  border: 1px solid #d7cff8;
+  border-radius: 5px;
+  margin-right: 5px;
+  font-size: 18px;
+}
+
+/* Estilo para el botón de enviar comentario */
+.btn-submit-comment {
+  padding: 10px 15px;
+  border: none;
+  border-radius: 5px;
+  background-color: #5f3bb6;
+  color: white;
+  cursor: pointer;
+  font-size: 14px;
+  transition: background-color 0.3s, transform 0.2s;
+}
+
+/* Efecto al pasar el mouse sobre el botón */
+.btn-submit-comment:hover {
+  background-color: #6d5ad6;
+  transform: scale(1.05);
+}
+
 /* Estilos de las publicaciones */
 
 .publicaciones {
