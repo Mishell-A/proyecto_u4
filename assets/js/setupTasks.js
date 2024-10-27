@@ -13,6 +13,15 @@ const tasksContainer = document.querySelector("#tasks-container");
 
 let editStatus = false;
 let editId = "";
+
+function scrollToElement(element) {
+  const headerHeight = document.querySelector("header")?.offsetHeight || 0;
+  const yOffset = -headerHeight - 10;
+  const y = element.getBoundingClientRect().top + window.scrollY + yOffset;
+
+  window.scrollTo({ top: y, behavior: "smooth" });
+}
+
 export const setupTasks = (user) => {
   console.log("Hola");
   console.log("Usuario:", user);
@@ -91,7 +100,7 @@ export const setupTasks = (user) => {
       }
       const hasLiked = data.likes && data.likes.includes(user.email);
       tasksHtml += `
-            <article class="my-4" id ="tasks-container">
+            <article class="my-4" id ="tasks-container ">
         <div class = "card publicaciones" >
           <div class = "card-body">
             <div class="d-flex justify-content-between align-items-center">
@@ -103,7 +112,7 @@ export const setupTasks = (user) => {
                   alt="${data.userName}"
                 />
                 <div>
-                  <h5 class="titulo-card mb-0">${data.userName}</h5>
+                  <h5 class="titulo-card mb-0" >${data.userName}</h5>
                   <p class="fecha-publicacion">
                     Publicado el :  ${data.userFecha}
                   </p>
@@ -119,6 +128,17 @@ export const setupTasks = (user) => {
                 <ul class="opciones-menu">
                   <li><button class="opcion btn-editar" data-id="${doc.id}">Editar</button></li>
                   <li><button class="opcion eliminar  btn-eliminar" data-id="${doc.id}">Eliminar</button></li>
+
+                  <div id="confirmModal" class="modal" style="display: none;">
+  <div class="modal-content">
+    <h3>¿Estás seguro que quieres eliminar esta publicación?</h3>
+    <div class="modal-buttons">
+      <button id="btn-cancel" class="btn-modal-cancel">Cancelar</button>
+      <button id="btn-confirm-delete" class="btn-modal-delete">Eliminar</button>
+    </div>
+  </div>
+</div>
+
                 </ul>
                </div>`
                     : `<div></div>`
@@ -185,16 +205,46 @@ export const setupTasks = (user) => {
         document.getElementById("form-publicacion").innerHTML =
           "Editar Publicación";
         taskForm["btn-agregar"].innerHTML = "Guardar Cambios";
+
+        scrollToElement(taskForm);
       });
     });
 
     // DELETE
-    const btnsEliminar = document.querySelectorAll(".btn-eliminar");
+    const confirmModal = document.getElementById("confirmModal");
+    const btnCancel = document.getElementById("btn-cancel");
+    const btnConfirmDelete = document.getElementById("btn-confirm-delete");
+    let taskToDeleteId = ""; // Almacena temporalmente el ID de la tarea a eliminar
 
+    // Mostrar el modal de confirmación
+    function showConfirmModal(taskId) {
+      taskToDeleteId = taskId;
+      confirmModal.style.display = "flex";
+    }
+
+    // Cerrar el modal
+    function closeConfirmModal() {
+      confirmModal.style.display = "none";
+      taskToDeleteId = ""; // Limpiar la referencia al ID de la tarea
+    }
+
+    // Evento para el botón de cancelar
+    btnCancel.addEventListener("click", closeConfirmModal);
+
+    // Evento para confirmar la eliminación
+    btnConfirmDelete.addEventListener("click", async () => {
+      if (taskToDeleteId) {
+        await deleteTask(taskToDeleteId);
+        console.log("Tarea eliminada con éxito");
+        closeConfirmModal(); // Cerrar el modal después de eliminar
+      }
+    });
+
+    // Manejo del evento para los botones de eliminar
+    const btnsEliminar = document.querySelectorAll(".btn-eliminar");
     btnsEliminar.forEach((btn) => {
       btn.addEventListener("click", ({ target: { dataset } }) => {
-        deleteTask(dataset.id);
-        console.log("tarea eliminada", "success");
+        showConfirmModal(dataset.id); // Mostrar el modal de confirmación
       });
     });
 
