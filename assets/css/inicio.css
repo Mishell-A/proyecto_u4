@@ -262,6 +262,72 @@ body {
   background-color: red;
   color: white;
 }
+/* editar */
+
+.edit-form {
+  display: flex;
+  flex-direction: column;
+  margin: 20px 0;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  padding: 15px;
+  background-color: #e6e6e6;
+}
+
+.edit-form input[type="text"] {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 16px;
+  box-sizing: border-box;
+}
+
+.edit-form textarea {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 16px;
+  resize: vertical;
+  min-height: 100px;
+}
+
+.edit-form .btn-guardar-cambios {
+  padding: 10px;
+  background: rgb(204, 158, 214);
+  background: radial-gradient(
+    circle,
+    rgba(204, 158, 214, 1) 36%,
+    rgba(104, 141, 214, 0.8346988453584558) 78%
+  );
+  color: white;
+  border: none;
+  border-radius: 4px;
+  font-size: 16px;
+  cursor: pointer;
+  margin-right: 10px;
+}
+
+.edit-form .btn-cancelar-edicion {
+  padding: 10px;
+  background-color: #dc3545;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.edit-form .btn-guardar-cambios:hover {
+  background-color: #218838;
+}
+
+.edit-form .btn-cancelar-edicion:hover {
+  background-color: #c82333;
+}
 
 /* Media Queries */
 
