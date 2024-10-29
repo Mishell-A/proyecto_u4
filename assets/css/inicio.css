@@ -24,9 +24,12 @@ body {
 /* Perfil lateral */
 .perfil {
   background-color: #e6e6e6;
-  padding: 20px;
+  padding: 5px;
   border-radius: 10px;
   text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .perfil-info .avatar {
@@ -212,6 +215,10 @@ body {
 
 .titulo-card {
   color: #5f3bb6;
+}
+
+.contenido-publicacion p {
+  font-size: 22px;
 }
 
 .fecha-publicacion {

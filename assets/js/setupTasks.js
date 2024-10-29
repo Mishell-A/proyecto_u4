@@ -127,13 +127,13 @@ export const setupTasks = (user) => {
                     : `<div></div>`
                 }
             </div>
-            <h4 class="contenido-publicacion" >
+            <h5 class="contenido-publicacion" >
              ${data.title}
-            </h4>
-            <hr />
-            <h5 class="contenido-publicacion">
-             ${data.description}
             </h5>
+            <hr />
+            <p class="contenido-publicacion-desc">
+             ${data.description}
+            </p>
           </div>
 
                 <form class="edit-form" style="display: none;">
@@ -152,7 +152,7 @@ export const setupTasks = (user) => {
   }" data-id="${doc.id}"
   ">
     <i class="bi bi-hand-thumbs-up"></i>
-    <h4 class= mb-0 ms-1">likes</h4>
+    <h4 class= mb-0 ms-1">Likes</h4>
     <span class="like-counter ms-2">${
       data.likes ? data.likes.length : 0
     }</ span>
