@@ -47,3 +47,9 @@ section {
   width: 40px;
   margin-right: 10px;
 }
+.photoURL {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  object-fit: cover;
+}
