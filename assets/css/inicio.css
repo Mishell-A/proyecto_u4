@@ -95,6 +95,10 @@ body {
   border: none;
 }
 
+.interaction-buttons {
+  padding-bottom: 7px;
+}
+
 /* Estilos para los botones de interacción */
 .interaction-buttons button {
   background-color: transparent;
