@@ -7,12 +7,14 @@ import {
   toggleLike,
   addComment,
 } from "./firebase.js";
+import { showMessage } from "./toastMessage.js";
 
 const taskForm = document.querySelector("#task-form");
 const tasksContainer = document.querySelector("#tasks-container");
 
 let editStatus = false;
 let editId = "";
+
 export const setupTasks = (user) => {
   console.log("Hola");
   console.log("Usuario:", user);
@@ -24,30 +26,18 @@ export const setupTasks = (user) => {
     const description = taskForm["description"].value;
 
     try {
-      if (!editStatus) {
-        await createTask(
-          title,
-          description,
-          user.displayName,
-          user.photoURL || "./assets/img/defaultProfile.png",
-          user.email
-        );
-        //showMessage("tarea creada", "success");
-      } else {
-        await updateTask(editId, { title, description });
-        //showMessage("tarea actualizada", "success");
+      await createTask(
+        title,
+        description,
+        user.displayName,
+        user.photoURL || "./assets/img/defaultProfile.png",
+        user.email
+      );
+      showMessage("tarea creada", "success");
 
-        editStatus = false;
-        editId = "";
-
-        document.getElementById("form-publicacion").innerHTML =
-          "Agregar publicación";
-        taskForm["btn-agregar"].innerHTML = "Publicar";
-      }
       taskForm.reset();
     } catch (error) {
-      //showMessage(error.code, "error");
-      console.log(error);
+      showMessage(error.code, "error");
     }
   });
 
@@ -69,7 +59,7 @@ export const setupTasks = (user) => {
 
   // Referencias al elemento de imagen de perfil
   const avatar = document.getElementById("avatar");
-
+  const nameElement = document.getElementById("Name");
   // Cargar imagen guardada o predeterminada al cargar la página
   window.onload = async function () {
     if (user.photoURL) {
@@ -77,6 +67,8 @@ export const setupTasks = (user) => {
     } else {
       avatar.src = "./assets/img/defaultProfile.png"; // Usar la imagen predeterminada
     }
+
+    nameElement.innerHTML = user.displayName || "Nombre de Usuario";
   };
 
   //READ
@@ -91,7 +83,7 @@ export const setupTasks = (user) => {
       }
       const hasLiked = data.likes && data.likes.includes(user.email);
       tasksHtml += `
-            <article class="my-4" id ="tasks-container">
+            <article class="my-4 task-${doc.id}" id ="tasks-container">
         <div class = "card publicaciones" >
           <div class = "card-body">
             <div class="d-flex justify-content-between align-items-center">
@@ -103,7 +95,7 @@ export const setupTasks = (user) => {
                   alt="${data.userName}"
                 />
                 <div>
-                  <h5 class="titulo-card mb-0">${data.userName}</h5>
+                  <h5 class="titulo-card mb-0" >${data.userName}</h5>
                   <p class="fecha-publicacion">
                     Publicado el :  ${data.userFecha}
                   </p>
@@ -119,19 +111,41 @@ export const setupTasks = (user) => {
                 <ul class="opciones-menu">
                   <li><button class="opcion btn-editar" data-id="${doc.id}">Editar</button></li>
                   <li><button class="opcion eliminar  btn-eliminar" data-id="${doc.id}">Eliminar</button></li>
+
+                  <div id="confirmModal" class="modal" style="display: none;">
+  <div class="modal-content">
+    <h3>¿Estás seguro que quieres eliminar esta publicación?</h3>
+    <div class="modal-buttons">
+      <button id="btn-cancel" class="btn-modal-cancel">Cancelar</button>
+      <button id="btn-confirm-delete" class="btn-modal-delete">Eliminar</button>
+    </div>
+  </div>
+</div>
+
                 </ul>
                </div>`
                     : `<div></div>`
                 }
             </div>
-            <h4 class="contenido-publicacion">
+            <h4 class="contenido-publicacion" >
              ${data.title}
             </h4>
             <hr />
-            <h5>
+            <h5 class="contenido-publicacion">
              ${data.description}
             </h5>
           </div>
+
+                <form class="edit-form" style="display: none;">
+              <input type="text" name="edit-title" value="${data.title}" />
+              <textarea name="edit-description">${data.description}</textarea>
+              <button class="btn-guardar-cambios" data-id="${
+                doc.id
+              }">Guardar</button>
+              <button type="button" class="btn-cancelar-edicion">Cancelar</button>
+            </form>
+
+              
       <div class="interaction-buttons d-flex justify-content-start align-items-center">
   <button class="btn-like d-flex align-items-center me-3 ${
     hasLiked ? "liked" : ""
@@ -167,34 +181,84 @@ export const setupTasks = (user) => {
     });
     tasksContainer.innerHTML = tasksHtml;
 
-    //UPDATE
+    // EDITAR
+
     const btnsEditar = document.querySelectorAll(".btn-editar");
     btnsEditar.forEach((btn) => {
-      btn.addEventListener("click", async ({ target: { dataset } }) => {
-        const doc = await getTask(dataset.id);
+      btn.addEventListener("click", (e) => {
+        const taskId = e.target.dataset.id;
+        const taskElement = document.querySelector(`.task-${taskId}`);
 
-        const task = doc.data();
+        // Elementos a ocultar y mostrar
+        const contenido = taskElement.querySelectorAll(
+          ".contenido-publicacion"
+        );
+        const form = taskElement.querySelector(".edit-form");
 
-        // llenamos los datos del formulario
-        taskForm["title"].value = task.title;
-        taskForm["description"].value = task.description;
+        // Ocultar contenido y mostrar formulario
+        contenido.forEach((element) => (element.style.display = "none"));
+        form.style.display = "block";
 
-        editStatus = true;
-        editId = doc.id;
+        // Configurar botón de guardar
+        form.querySelector(".btn-guardar-cambios").onclick = async (e) => {
+          e.preventDefault();
+          const title = form.querySelector('input[name="edit-title"]').value;
+          const description = form.querySelector(
+            'textarea[name="edit-description"]'
+          ).value;
 
-        document.getElementById("form-publicacion").innerHTML =
-          "Editar Publicación";
-        taskForm["btn-agregar"].innerHTML = "Guardar Cambios";
+          // Actualizar en base de datos y en interfaz
+          await updateTask(taskId, { title, description });
+          contenido[0].innerText = title;
+          contenido[1].innerText = description;
+
+          form.style.display = "none";
+          contenido.forEach((element) => (element.style.display = "block"));
+        };
+
+        // Configurar botón de cancelar
+        form.querySelector(".btn-cancelar-edicion").onclick = () => {
+          form.style.display = "none";
+          contenido.forEach((element) => (element.style.display = "block"));
+        };
       });
     });
 
     // DELETE
-    const btnsEliminar = document.querySelectorAll(".btn-eliminar");
+    const confirmModal = document.getElementById("confirmModal");
+    const btnCancel = document.getElementById("btn-cancel");
+    const btnConfirmDelete = document.getElementById("btn-confirm-delete");
+    let taskToDeleteId = ""; // Almacena temporalmente el ID de la tarea a eliminar
 
+    // Mostrar el modal de confirmación
+    function showConfirmModal(taskId) {
+      taskToDeleteId = taskId;
+      confirmModal.style.display = "flex";
+    }
+
+    // Cerrar el modal
+    function closeConfirmModal() {
+      confirmModal.style.display = "none";
+      taskToDeleteId = ""; // Limpiar la referencia al ID de la tarea
+    }
+
+    // Evento para el botón de cancelar
+    btnCancel.addEventListener("click", closeConfirmModal);
+
+    // Evento para confirmar la eliminación
+    btnConfirmDelete.addEventListener("click", async () => {
+      if (taskToDeleteId) {
+        await deleteTask(taskToDeleteId);
+        console.log("Tarea eliminada con éxito");
+        closeConfirmModal(); // Cerrar el modal después de eliminar
+      }
+    });
+
+    // Manejo del evento para los botones de eliminar
+    const btnsEliminar = document.querySelectorAll(".btn-eliminar");
     btnsEliminar.forEach((btn) => {
       btn.addEventListener("click", ({ target: { dataset } }) => {
-        deleteTask(dataset.id);
-        console.log("tarea eliminada", "success");
+        showConfirmModal(dataset.id); // Mostrar el modal de confirmación
       });
     });
 
