@@ -3,7 +3,6 @@ import {
   onGetTask,
   deleteTask,
   updateTask,
-  getTask,
   toggleLike,
   addComment,
 } from "./firebase.js";
@@ -33,7 +32,7 @@ export const setupTasks = (user) => {
         user.photoURL || "./assets/img/defaultProfile.png",
         user.email
       );
-      showMessage("tarea creada", "success");
+      showMessage("publicación creada", "success");
 
       taskForm.reset();
     } catch (error) {
@@ -60,10 +59,27 @@ export const setupTasks = (user) => {
   // Referencias al elemento de imagen de perfil
   const avatar = document.getElementById("avatar");
   const nameElement = document.getElementById("Name");
+  const joinedDateElement = document.getElementById("joined-date");
+  const joinedTimestamp = Number(user.createdAt);
+
+  // Verifica que el timestamp sea válido
+  if (!isNaN(joinedTimestamp)) {
+    const joinedDate = new Date(joinedTimestamp).toLocaleDateString("es-ES", {
+      year: "numeric",
+      month: "long",
+      day: "numeric",
+    });
+
+    joinedDateElement.innerHTML = `Se unio el: ${joinedDate}`;
+  } else {
+    joinedDateElement.innerHTML = "Fecha de unión no disponible";
+  }
+
   // Cargar imagen guardada o predeterminada al cargar la página
   window.onload = async function () {
     if (user.photoURL) {
-      avatar.src = user.photoURL; // Cargar la imagen guardada en Firebase
+      avatar.src = user.photoURL;
+      // Cargar la imagen guardada en Firebase
     } else {
       avatar.src = "./assets/img/defaultProfile.png"; // Usar la imagen predeterminada
     }
@@ -226,14 +242,31 @@ export const setupTasks = (user) => {
 
     // DELETE
     const confirmModal = document.getElementById("confirmModal");
-    const btnCancel = document.getElementById("btn-cancel");
-    const btnConfirmDelete = document.getElementById("btn-confirm-delete");
     let taskToDeleteId = ""; // Almacena temporalmente el ID de la tarea a eliminar
 
     // Mostrar el modal de confirmación
     function showConfirmModal(taskId) {
       taskToDeleteId = taskId;
       confirmModal.style.display = "flex";
+
+      // Agregar eventos a los botones aquí, después de mostrar el modal
+      const btnCancel = confirmModal.querySelector("#btn-cancel");
+      const btnConfirmDelete = confirmModal.querySelector(
+        "#btn-confirm-delete"
+      );
+
+      // Evento para el botón de cancelar
+      btnCancel.addEventListener("click", closeConfirmModal);
+
+      // Evento para confirmar la eliminación
+      btnConfirmDelete.addEventListener("click", async () => {
+        if (taskToDeleteId) {
+          await deleteTask(taskToDeleteId);
+          showMessage("Publicación eliminada", "success");
+          closeConfirmModal(); // Cerrar el modal después de eliminar
+          // Opcional: Aquí puedes eliminar el elemento de la interfaz si es necesario
+        }
+      });
     }
 
     // Cerrar el modal
@@ -242,18 +275,6 @@ export const setupTasks = (user) => {
       taskToDeleteId = ""; // Limpiar la referencia al ID de la tarea
     }
 
-    // Evento para el botón de cancelar
-    btnCancel.addEventListener("click", closeConfirmModal);
-
-    // Evento para confirmar la eliminación
-    btnConfirmDelete.addEventListener("click", async () => {
-      if (taskToDeleteId) {
-        await deleteTask(taskToDeleteId);
-        console.log("Tarea eliminada con éxito");
-        closeConfirmModal(); // Cerrar el modal después de eliminar
-      }
-    });
-
     // Manejo del evento para los botones de eliminar
     const btnsEliminar = document.querySelectorAll(".btn-eliminar");
     btnsEliminar.forEach((btn) => {
@@ -261,6 +282,8 @@ export const setupTasks = (user) => {
         showConfirmModal(dataset.id); // Mostrar el modal de confirmación
       });
     });
+
+    // Like
 
     const btnsLike = document.querySelectorAll(".btn-like");
     btnsLike.forEach((btn) => {
