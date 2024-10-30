@@ -72,8 +72,10 @@
     </header>
 
     <main class="container my-5 principal">
-      <div class="row gx-4 perfil-lateral">
-        <aside class="col-lg-4 col-md-5 perfil">
+      <div
+        class="perfil-lateral d-flex justify-content-between align-items-stretch gap-3"
+      >
+        <aside class="perfil px-2">
           <div class="perfil-info">
             <!-- Imagen del avatar (clicable) -->
             <img
@@ -87,7 +89,7 @@
           </div>
         </aside>
 
-        <section class="col-lg-8 col-md-7">
+        <section class="create-post flex-grow-1">
           <div class="card p-3 crear-pub">
             <div class="d-flex align-items-center mb-2">
               <h5 class="titulo-card mb-0" id="form-publicacion">
@@ -108,7 +110,7 @@
 
               <div class="d-flex mb-2">
                 <textarea
-                  class="campo-texto me-2"
+                  class="campo-texto"
                   id="description"
                   rows="3"
                   placeholder="¿Qué estás pensando?"
