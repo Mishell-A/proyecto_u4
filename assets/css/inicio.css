@@ -21,9 +21,6 @@ body {
   max-width: 1400px; /* Máximo ancho para pantallas grandes */
 }
 
-.perfil-lateral {
-}
-
 /* Perfil lateral */
 .perfil {
   background-color: #e6e6e6;
@@ -32,6 +29,11 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
+  width: 30%;
+}
+
+.perfil #joined-date {
+  font-size: 12px;
 }
 
 .perfil-info .avatar {
@@ -407,6 +409,7 @@ body {
 
   .perfil {
     width: 100%;
+    height: 20em;
   }
 
   .navbar-brand {

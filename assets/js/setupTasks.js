@@ -191,7 +191,7 @@ export const setupTasks = (user) => {
 
         // Elementos a ocultar y mostrar
         const contenido = taskElement.querySelectorAll(
-          ".contenido-publicacion, .contenido-publicacion-desc"
+          ".contenido-publicacion"
         );
         const form = taskElement.querySelector(".edit-form");
 
