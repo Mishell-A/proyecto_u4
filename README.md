@@ -9,14 +9,7 @@ Bienvenido a **Chattergram**, la red social que transforma la forma en que compa
 - **Publicaciones y Comentarios**: Comparte pensamientos, publica contenido y participa en conversaciones significativas.
 - **Interacción Social**: Da "me gusta" a publicaciones y descubre contenido popular entre amigos y la comunidad.
 
-## 📜 Historias de Usuario
-
-1. **Como usuario nuevo**, quiero registrarme fácilmente para acceder a la plataforma y comenzar a compartir contenido.
-2. **Como usuario**, quiero ver un feed de publicaciones en mi página principal para mantenerme al tanto de la actividad de la comunidad.
-3. **Como usuario**, quiero comentar en publicaciones para interactuar y expresar mi opinión.
-4. **Como usuario**, quiero dar "me gusta" a publicaciones para mostrar apoyo y reconocimiento a otros.
-
-## 🎨 Proceso de Diseño
+## 🧩 Proceso de Diseño
 
 Chattergram fue diseñado partiendo de las necesidades y expectativas de los usuarios. Para ello, se definieron objetivos clave:
 
@@ -30,6 +23,13 @@ Chattergram fue diseñado partiendo de las necesidades y expectativas de los usu
 2. **Desarrollo del Prototipo 💻**: Inspirados en la estructura de Instagram, creamos un prototipo inicial que incorpora características esenciales de Chattergram.
 3. **Implementación 🔎**: Usamos HTML, CSS, JavaScript, Bootstrap y Firebase para desarrollar y ajustar la aplicación según los resultados de pruebas de usabilidad.
 
+## 📜 Historias de Usuario
+
+1. **Como usuario nuevo**, quiero registrarme fácilmente para acceder a la plataforma y comenzar a compartir contenido.
+2. **Como usuario**, quiero ver un feed de publicaciones en mi página principal para mantenerme al tanto de la actividad de la comunidad.
+3. **Como usuario**, quiero comentar en publicaciones para interactuar y expresar mi opinión.
+4. **Como usuario**, quiero dar "me gusta" a publicaciones para mostrar apoyo y reconocimiento a otros.
+
 ## Solución del Problema del Usuario 📢
 
 - **Centralización de Información**: Asegura una experiencia segura mediante el uso de contraseñas y autenticación.
@@ -40,7 +40,8 @@ Chattergram facilita la conexión y el intercambio de historias y experiencias, 
 
 ## 🎬 Historia de Chattergram
 
-Chattergram fue creado tomando inspiración de Instagram, lo cual brindó una base sólida para el diseño de nuestra estructura de datos y funciones. Con nuestro propio estilo y colores, Chattergram busca ser un espacio para que los usuarios compartan situaciones, gustos y hagan nuevas conexiones.
+Chattergram fue creado tomando inspiración de X, lo cual brindó una base sólida para el diseño de nuestra estructura de datos y funciones. Con nuestro propio estilo y colores, Chattergram busca ser un espacio para que los usuarios compartan situaciones, gustos y hagan nuevas conexiones.
+
 
 ## 📌 Prototipos
 
