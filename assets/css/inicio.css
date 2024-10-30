@@ -103,7 +103,8 @@ body {
 }
 
 .interaction-buttons {
-  padding: 15px;
+  padding-bottom: 15px;
+  padding-left: 10px;
 }
 
 /* Estilos para los botones de interacción */
@@ -158,13 +159,17 @@ body {
   transform: translateY(-2px);
 }
 
-/* Estilo para la imagen del perfil del comentarista */
+/* Estilos para la imagen de perfil */
 .foto-perfil {
   width: 50px;
   height: 50px;
   border-radius: 50%;
-  margin-right: 10px;
+  margin-right: 15px; /* Ajuste del margen */
   border: 2px solid #5f3bb6;
+}
+
+.card-contenido {
+  margin-top: 15px;
 }
 
 /* Estilo para el texto del comentario */
@@ -221,12 +226,19 @@ body {
   color: #5f3bb6;
 }
 
-.contenido-publicacion p {
+.contenido-publicacion {
+  margin-top: 10px;
   font-size: 22px;
+  font-weight: bolder;
+}
+.contenido-publicacion-desc {
+  margin-top: 18px;
+  font-size: 18px;
 }
 
 .fecha-publicacion {
-  color: #7a6ca1;
+  color: #342f41;
+  font-size: 13px;
 }
 
 .contenido-publicacion {
@@ -430,5 +442,10 @@ body {
 
   .btn-submit-comment {
     padding: 8px 10px; /* Ajustar tamaño del botón */
+  }
+
+  .contenido-publicacion-desc {
+    margin-top: 18px;
+    font-size: 14px;
   }
 }
