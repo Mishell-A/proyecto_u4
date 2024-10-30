@@ -103,7 +103,7 @@ body {
 }
 
 .interaction-buttons {
-  padding-bottom: 7px;
+  padding: 15px;
 }
 
 /* Estilos para los botones de interacción */
@@ -119,7 +119,7 @@ body {
 }
 
 .interaction-buttons button:hover {
-  color: #0056b3; /* Color al pasar el ratón por encima */
+  color: #6200b3; /* Color al pasar el ratón por encima */
 }
 
 /* Estilos para el contador de likes */
@@ -392,10 +392,6 @@ body {
   .btn-submit-comment {
     font-size: 14px; /* Ajustar tamaño del botón */
   }
-
-  .interaction-buttons button i {
-    font-size: 18px; /* Tamaño de los iconos */
-  }
 }
 
 @media (max-width: 576px) {
@@ -434,9 +430,5 @@ body {
 
   .btn-submit-comment {
     padding: 8px 10px; /* Ajustar tamaño del botón */
-  }
-
-  .interaction-buttons button i {
-    font-size: 16px; /* Tamaño de los iconos */
   }
 }
