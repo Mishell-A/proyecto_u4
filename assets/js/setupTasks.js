@@ -60,6 +60,24 @@ export const setupTasks = (user) => {
   // Referencias al elemento de imagen de perfil
   const avatar = document.getElementById("avatar");
   const nameElement = document.getElementById("Name");
+  const joinedDateElement = document.getElementById("joined-date");
+
+  // Convertir el timestamp de creación a número
+  const joinedTimestamp = Number(user.createdAt);
+
+  // Verificar que el timestamp sea válido y mostrar la fecha
+  if (!isNaN(joinedTimestamp)) {
+    const joinedDate = new Date(joinedTimestamp).toLocaleDateString("es-ES", {
+      year: "numeric",
+      month: "long",
+      day: "numeric",
+    });
+
+    joinedDateElement.innerHTML = `Se unió el: ${joinedDate}`;
+  } else {
+    joinedDateElement.innerHTML = "Fecha de unión no disponible";
+  }
+
   // Cargar imagen guardada o predeterminada al cargar la página
   window.onload = async function () {
     if (user.photoURL) {
