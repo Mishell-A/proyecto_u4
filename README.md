@@ -1,64 +1,42 @@
-# Chattergram
+# 💯💯 CHATTERGRAM 💯💯 </div>
 
 Chattergram es una innovadora red social que permite a los usuarios conectarse, comunicarse y compartir experiencias de manera única. Diseñada para facilitar interacciones significativas, Chattergram combina una interfaz intuitiva con potentes funcionalidades para crear un entorno social atractivo y dinámico.
 
-## Características
-
+## Características📜📜
+Interfaz Amigable: Navegación sencilla y atractiva que mejora la experiencia del usuario.
+Registro y Autenticación: Los usuarios pueden crear cuentas y gestionar su información de manera segura.
+Publicaciones y Mensajes: Comparte contenido y comunica con amigos de forma rápida y efectiva.
+Conexiones: Encuentra y sigue a amigos y familiares para mantenerte en contacto.
 - **Interfaz Amigable:** Navegación sencilla y atractiva que mejora la experiencia del usuario.
 - **Registro y Autenticación:** Los usuarios pueden crear cuentas y gestionar su información de manera segura.
 - **Publicaciones y Mensajes:** Comparte contenido y comunica con amigos de forma rápida y efectiva.
 - **Conexiones:** Encuentra y sigue a amigos y familiares para mantenerte en contacto.
 
-
-## 📌Objetivos del proyecto
-
-## Proceso de Diseño 🎨
-
-1. **Investigación y Planificación:**
-  
-2. **Diseño de la Interfaz de Usuario (UI):**
-  
-
-3. **Desarrollo del Prototipo:**
- 
-4. **Implementación:**
- 
-5. **Lanzamiento y Revisión:**
-  
-## Solución del Problema del Usuario 🛠️
-
-
-- **Centralización de Información:** Proporciona un único recurso para consultar información completa sobre personajes, episodios y lugares de la serie.
-  
-- **Datos Actualizados:** Ofrece información precisa y actualizada utilizando el API de "Rick and Morty".
-
-- **Interfaz Intuitiva:** Facilita una navegación clara y atractiva, mejorando la experiencia del usuario al explorar la serie.
-
-- **Estadísticas y Opiniones:** Incluye gráficos de votación y opiniones de los fans sobre episodios y personajes, permitiendo a los usuarios ver cuáles son los favoritos de la comunidad y obtener una perspectiva más amplia sobre la serie.
-
-Con esta aplicación, los usuarios pueden acceder fácilmente a toda la información relevante sobre "Rick and Morty" y explorar estadísticas y opiniones en un solo lugar.
-
-## Historia de Usuario 🎯
-
-**Como** fanático de "Rick and Morty",  
-**Quiero** una aplicación web que me permita consultar información detallada sobre personajes, episodios, y lugares de la serie,  
-**Para que** pueda explorar y conocer mejor los detalles y estadísticas relacionadas con la serie de forma rápida y centralizada.
-
 ## Prototipos
-
-### Prototipo de Baja Fidelidad 📝
-
-| Página Principal | Página de Selección |
-| ---------------- | -------------------- |
-| ![Página Principal] | ![Página de Selección] |
-
-| Selección | Detalles |
-| ---------- | ------- |
-| ![Personajes]| ![Lugares]
 
 ### Prototipo de Alta Fidelidad 💻
 
+Pagina de Inicio de Seción
 
+![alt text](image-3.png)
+
+Pagina principal
+
+![alt text](image-4.png)
+
+Pagina de perfil
+
+![alt text](image-5.png)
+
+### Prototipo de Baja Fidelidad 📝
+
+| Página Principal | Página de Selección |  Página de Perfil   |
+| ---------------- | -------------------- | -------------------  |
+| ![Inicio de Sesión](./assets/img/image.png) | ![Página Principal](./assets/img/image-1.png) | ![Perfil](./assets/img/image-2.png)
+
+| Selección | Detalles |
+| ---------- | ------- |
+| ![Personajes](https://i.postimg.cc/yNFcYv2H/titulo-1.png) | ![Lugares](https://i.postimg.cc/L8q6T5VQ/Whats-App-Image-2024-09-18-at-8-47-38-PM.jpg) |
 ## Tecnologías Utilizadas
 
 A continuación, se muestran las tecnologías utilizadas en el desarrollo de Chattergram:
@@ -69,8 +47,10 @@ A continuación, se muestran las tecnologías utilizadas en el desarrollo de Cha
 [![Bootstrap](https://img.shields.io/badge/-Bootstrap-563D7C?style=flat-square&logo=bootstrap)](#)
 [![Firebase](https://img.shields.io/badge/Firebase-FFCA28?style=flat-square&logo=firebase&logoColor=black)](#)
 
-## 👩‍💻Creado por: 
+## 👩‍💻👩‍💻Creado por: 
 
 * [Mishell Arroyo](https://github.com/Mishell-A)
 * [Oriana](https://github.com/ori27-ops)
-
+* [Brizett-TB](https://github.com/Brizett-TB)
+* [GuadalupeCampos](https://github.com/GuadalupeCampos)
+* [guadalupe56-dot](https://github.com/guadalupe56-dot)
