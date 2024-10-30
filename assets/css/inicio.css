@@ -21,10 +21,12 @@ body {
   max-width: 1400px; /* Máximo ancho para pantallas grandes */
 }
 
+.perfil-lateral {
+}
+
 /* Perfil lateral */
 .perfil {
   background-color: #e6e6e6;
-  padding: 5px;
   border-radius: 10px;
   text-align: center;
   display: flex;
@@ -351,13 +353,13 @@ body {
   body {
     font-size: 19px; /* Ajustar tamaño base */
   }
+
+  .perfil {
+    width: 30%;
+  }
 }
 
 @media (max-width: 768px) {
-  .perfil {
-    margin-bottom: 16px;
-  }
-
   .foto-perfil {
     width: 40px;
     height: 40px;
@@ -397,6 +399,14 @@ body {
 @media (max-width: 576px) {
   body {
     font-size: 10px; /* Tamaño más pequeño para pantallas pequeñas */
+  }
+
+  .perfil-lateral {
+    flex-direction: column;
+  }
+
+  .perfil {
+    width: 100%;
   }
 
   .navbar-brand {
