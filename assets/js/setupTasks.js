@@ -112,7 +112,7 @@ export const setupTasks = (user) => {
                   class="foto-perfil"
                   alt="${data.userName}"
                 />
-                <div>
+                <div class="card-contenido">
                   <h5 class="titulo-card mb-0" >${data.userName}</h5>
                   <p class="fecha-publicacion">
                     Publicado el :  ${data.userFecha}
@@ -145,9 +145,9 @@ export const setupTasks = (user) => {
                     : `<div></div>`
                 }
             </div>
-            <h5 class="contenido-publicacion" >
+            <p class="contenido-publicacion" >
              ${data.title}
-            </h5>
+            </p>
             <hr />
             <p class="contenido-publicacion-desc">
              ${data.description}
