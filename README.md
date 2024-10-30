@@ -49,7 +49,7 @@ Chattergram fue creado tomando inspiración de X, lo cual brindó una base sóli
 
 | Página de Login | Página de Registro | Página Principal | Página de Perfil |
 | --------------- | ----------------- | ---------------- | ---------------- |
-| ![Inicio de Sesión](./assets/img/Prot.Baj.Login.jpg) | ![Página de Registro]() | ![Página Principal](./assets/img/image-1.png) | ![Perfil](./assets/img/Prot.Baj.Perfil.png) |
+| ![Inicio de Sesión](./assets/img/Prot.Baj.Login.jpg) | ![Página de Registro](./assets/img/Prot.Baj.Registro.png) | ![Página Principal](./assets/img/Prot.Baj.Principal.png) | ![Perfil](./assets/img/Prot.Baj.Perfil.png) |
 
 ### Prototipo de Alta Fidelidad 💻
 
