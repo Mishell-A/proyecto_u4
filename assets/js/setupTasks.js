@@ -149,17 +149,16 @@ export const setupTasks = (user) => {
       <div class="interaction-buttons d-flex justify-content-start align-items-center">
   <button class="btn-like d-flex align-items-center me-3 ${
     hasLiked ? "liked" : ""
-  }" data-id="${doc.id}"
-  ">
-    <i class="bi bi-hand-thumbs-up"></i>
-    <h4 class= mb-0 ms-1">Likes</h4>
-    <span class="like-counter ms-2">${
+  }" data-id="${doc.id}">
+    <i class="bi bi-hand-thumbs-up" style="font-size: 16px;"></i>
+    <h4 class="mb-0 ms-1" style="font-size: 16px;">Likes</h4>
+    <span class="like-counter ms-2" style="font-size: 16px;">${
       data.likes ? data.likes.length : 0
-    }</ span>
+    }</span>
   </button>
   <button class="btn-comment d-flex align-items-center" data-id="${doc.id}">
-    <i class="bi bi-chat-dots-fill"></i>
-    <h4 class="mb-0 ms-1">Comentar</h4>
+    <i class="bi bi-chat-dots-fill" style="font-size: 16px;"></i>
+    <h4 class="mb-0 ms-1" style="font-size: 16px;">Comentar</h4>
   </button>
 </div>
 
