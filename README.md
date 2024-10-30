@@ -14,29 +14,18 @@ Conexiones: Encuentra y sigue a amigos y familiares para mantenerte en contacto.
 
 ## Prototipos
 
-### Prototipo de Alta Fidelidad 💻
-
-Pagina de Inicio de Seción
-
-![alt text](image-3.png)
-
-Pagina principal
-
-![alt text](image-4.png)
-
-Pagina de perfil
-
-![alt text](image-5.png)
-
 ### Prototipo de Baja Fidelidad 📝
 
-| Página Principal | Página de Selección |  Página de Perfil   |
+| Página Principal | Página de Sesion |  Página de Perfil   |
 | ---------------- | -------------------- | -------------------  |
-| ![Inicio de Sesión](./assets/img/image.png) | ![Página Principal](./assets/img/image-1.png) | ![Perfil](./assets/img/image-2.png)
+| ![Inicio de Sesión](./assets/img/image.png) | ![Página Principal](./assets/img/image-1.png) | ![Perfil](./assets/img/Anotación%202024-10-29%20235034.png)
 
-| Selección | Detalles |
-| ---------- | ------- |
-| ![Personajes](https://i.postimg.cc/yNFcYv2H/titulo-1.png) | ![Lugares](https://i.postimg.cc/L8q6T5VQ/Whats-App-Image-2024-09-18-at-8-47-38-PM.jpg) |
+### Prototipo de Alta Fidelidad 💻
+
+| Página Principal | Página de Sesion |  Página de Perfil   |
+| ---------------- | -------------------- | -------------------  |
+| ![Inicio de Sesión](./assets/img/WhatsApp%20Image%202024-10-29%20at%2010.48.25%20PM.jpeg) | ![Página Principal](./assets/img/Anotación%202024-10-29%20233130.png) | ![Perfil](./assets/img/Anotación%202024-10-29%20233144%20(2).png)
+
 ## Tecnologías Utilizadas
 
 A continuación, se muestran las tecnologías utilizadas en el desarrollo de Chattergram:
