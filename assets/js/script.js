@@ -4,11 +4,17 @@ import { onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.14.1/f
 import "./signupForm.js";
 import "./googleLogin.js";
 import "./signinForm.js";
+import "./githubLogin.js";
 
 //Manejo de la autenticación
 //Cada ves que se cambie la autenticacion va a aparecer eso
 onAuthStateChanged(auth, async (user) => {
   console.log(user);
+  // Guardamos el usuario en el localstorage
+  localStorage.setItem("user", JSON.stringify(user));
+  localStorage.setItem("email", JSON.stringify(email));
+  localStorage.setItem("photoURL", JSON.stringify(photoURL));
+
 });
 
 // Esperar a que el documento esté listo

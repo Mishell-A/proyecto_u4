@@ -1,6 +1,9 @@
 // Import the functions you need from the SDKs you need
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.14.1/firebase-app.js";
-import { getAuth } from "https://www.gstatic.com/firebasejs/10.14.1/firebase-auth.js";
+import {
+  getAuth,
+  updateProfile,
+} from "https://www.gstatic.com/firebasejs/10.14.1/firebase-auth.js";
 // firestore
 import {
   getFirestore,
@@ -11,7 +14,9 @@ import {
   deleteDoc,
   updateDoc,
   getDoc,
+  arrayUnion,
 } from "https://www.gstatic.com/firebasejs/10.14.1/firebase-firestore.js";
+
 // TODO: Add SDKs for Firebase products that you want to use
 
 // https://firebase.google.com/docs/web/setup#available-libraries
@@ -36,8 +41,23 @@ export const db = getFirestore();
 
 // Opreciones CRUD
 
-export const createTask = (title, description) => {
-  addDoc(collection(db, "tasks"), { title, description });
+export const createTask = (
+  title,
+  description,
+  userName,
+  userImage,
+  userEmail
+) => {
+  addDoc(collection(db, "tasks"), {
+    title,
+    description,
+    userName,
+    userImage,
+    userEmail,
+    userFecha: new Date().toLocaleString(),
+    likes: [],
+    comments: [],
+  });
 };
 
 export const onGetTask = (callback) =>
@@ -48,3 +68,44 @@ export const updateTask = (id, newData) =>
   updateDoc(doc(db, "tasks", id), newData);
 
 export const deleteTask = (id) => deleteDoc(doc(db, "tasks", id));
+export { updateProfile };
+
+//LIKES
+export const toggleLike = async (taskId, userEmail) => {
+  const taskRef = doc(db, "tasks", taskId);
+  const taskSnap = await getDoc(taskRef);
+
+  if (taskSnap.exists()) {
+    const taskData = taskSnap.data();
+    const likes = taskData.likes || [];
+
+    if (likes.includes(userEmail)) {
+      // Eliminar el like del usuario si ya lo había dado
+      const updatedLikes = likes.filter((email) => email !== userEmail);
+      await updateDoc(taskRef, { likes: updatedLikes });
+    } else {
+      // Agregar el like del usuario
+      await updateDoc(taskRef, { likes: [...likes, userEmail] });
+    }
+  }
+};
+// Crear comentario
+// Para agregar un comentario
+export const addComment = async (
+  taskId,
+  comment,
+  userName,
+  userImage,
+  userEmail
+) => {
+  const taskRef = doc(db, "tasks", taskId);
+  await updateDoc(taskRef, {
+    comments: arrayUnion({
+      comment,
+      userName,
+      userImage,
+      userEmail,
+      timestamp: new Date().toLocaleString(),
+    }),
+  });
+};
